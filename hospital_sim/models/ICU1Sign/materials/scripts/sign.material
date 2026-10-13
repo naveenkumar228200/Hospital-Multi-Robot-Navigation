@@ -1,0 +1,15 @@
+material ICU1/Sign
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+
+      texture_unit
+      {
+        texture icu1.png
+      }
+    }
+  }
+}

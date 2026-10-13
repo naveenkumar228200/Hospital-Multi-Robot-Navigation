@@ -1,0 +1,670 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+
+<world name="smart_hospital">
+
+  <!-- LIGHT -->
+  <light name="sun_light" type="directional">
+    <cast_shadows>true</cast_shadows>
+    <pose>0 0 20 0 0 0</pose>
+
+    <diffuse>1 1 1 1</diffuse>
+    <specular>0.2 0.2 0.2 1</specular>
+
+    <direction>-0.5 0.1 -0.9</direction>
+  </light>
+
+  <!-- FLOOR -->
+  <model name="floor">
+    <static>true</static>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 40 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>60 40 0.1</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.95 0.95 0.95 1</ambient>
+          <diffuse>0.95 0.95 0.95 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- OUTER WALLS -->
+
+  <model name="top_wall">
+    <static>true</static>
+    <pose>0 20 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.4 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>60 0.4 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.8 0.8 0.85 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="bottom_wall">
+    <static>true</static>
+    <pose>0 -20 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.4 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>60 0.4 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.8 0.8 0.85 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="left_wall">
+    <static>true</static>
+    <pose>-30 0 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>40 0.4 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>40 0.4 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.8 0.8 0.85 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="right_wall">
+    <static>true</static>
+    <pose>30 0 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>40 0.4 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>40 0.4 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.8 0.8 0.85 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- MAIN CORRIDOR WALLS -->
+
+  <model name="corridor_top">
+    <static>true</static>
+    <pose>0 5 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>60 0.2 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="corridor_bottom">
+    <static>true</static>
+    <pose>0 -5 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>60 0.2 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- TOP SECTION DIVIDERS -->
+
+  <model name="icu1_divider">
+    <static>true</static>
+    <pose>-20 12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="icu2_divider">
+    <static>true</static>
+    <pose>-8 12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="patient_divider">
+    <static>true</static>
+    <pose>4 12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="medical_divider">
+    <static>true</static>
+    <pose>16 12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- BOTTOM SECTION DIVIDERS -->
+
+  <model name="reception_divider">
+    <static>true</static>
+    <pose>-18 -12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+  <model name="waiting_divider">
+    <static>true</static>
+    <pose>-6 -12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+  <model name="opd_divider">
+    <static>true</static>
+    <pose>6 -12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+  <model name="pharmacy_divider">
+    <static>true</static>
+    <pose>18 -12.5 1.5 0 0 1.57</pose>
+
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>15 0.2 3</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+  <!-- BATHROOM AREA -->
+
+  <model name="bathroom_wall">
+    <static>true</static>
+    <pose>-15 -18 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>20 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>20 0.2 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.6 0.9 1 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- CANTEEN AREA -->
+
+  <model name="canteen_wall">
+    <static>true</static>
+    <pose>15 -18 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>20 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>20 0.2 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>1 0.9 0.6 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- ICU BED 1 -->
+
+  <include>
+    <uri>model://CGMClassic</uri>
+    <name>icu_bed_1</name>
+    <pose>-24 13 0 0 0 0</pose>
+  </include>
+
+  <!-- ICU BED 2 -->
+
+  <include>
+    <uri>model://CGMClassic</uri>
+    <name>icu_bed_2</name>
+    <pose>-12 13 0 0 0 0</pose>
+  </include>
+
+  <!-- PATIENT BED -->
+
+  <include>
+    <uri>model://MalePatientBed</uri>
+    <name>patient_bed_1</name>
+    <pose>0 13 0 0 0 0</pose>
+  </include>
+
+  <!-- STORAGE RACK -->
+
+  <include>
+    <uri>model://StorageRack</uri>
+    <name>storage_1</name>
+    <pose>22 13 0 0 0 0</pose>
+  </include>
+
+  <!-- WHEELCHAIR -->
+
+  <include>
+    <uri>model://PatientWheelChair</uri>
+    <name>wheelchair_1</name>
+    <pose>4 0 0 0 0 1.57</pose>
+  </include>
+
+  <!-- NURSE -->
+
+  <include>
+    <uri>model://Nurse</uri>
+    <name>nurse_1</name>
+    <pose>-2 0 0 0 0 1.57</pose>
+  </include>
+
+  <!-- RECEPTION TABLE -->
+
+  <include>
+    <uri>model://MainTable</uri>
+    <name>reception_table</name>
+    <pose>-24 -13 0 0 0 0</pose>
+  </include>
+
+  <!-- WAITING CHAIRS -->
+
+  <include>
+    <uri>model://Chair(1)</uri>
+    <name>chair_1</name>
+    <pose>-8 -13 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair(1)</uri>
+    <name>chair_2</name>
+    <pose>-6 -13 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair(1)</uri>
+    <name>chair_3</name>
+    <pose>-4 -13 0 0 0 0</pose>
+  </include>
+
+  <!-- SOFA -->
+
+  <include>
+    <uri>model://MiniSofa</uri>
+    <name>sofa_1</name>
+    <pose>-10 -10 0 0 0 1.57</pose>
+  </include>
+
+  <!-- OPD TABLE -->
+
+  <include>
+    <uri>model://BedsideTable2</uri>
+    <name>opd_table</name>
+    <pose>6 -13 0 0 0 0</pose>
+  </include>
+
+  <!-- PHARMACY -->
+
+  <include>
+    <uri>model://StorageRackCovered</uri>
+    <name>pharmacy_rack</name>
+    <pose>18 -13 0 0 0 0</pose>
+  </include>
+
+  <!-- ENTRY GATE -->
+
+  <model name="entry_gate">
+    <static>true</static>
+    <pose>28 -13 1 0 0 0</pose>
+
+    <link name="link">
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>3 0.2 2.5</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0 0.5 1 1</ambient>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <!-- WASHROOM -->
+
+  <include>
+    <uri>model://StandardToilet</uri>
+    <name>washroom_toilet</name>
+    <pose>-24 -22 0 0 0 0</pose>
+  </include>
+
+  <!-- BATHROOM -->
+
+  <include>
+    <uri>model://Bathtub</uri>
+    <name>bathroom_tub</name>
+    <pose>-10 -22 0 0 0 0</pose>
+  </include>
+
+  <!-- CANTEEN TABLE -->
+
+  <include>
+    <uri>model://Dining Table</uri>
+    <name>canteen_table</name>
+    <pose>18 -22 0 0 0 0</pose>
+  </include>
+
+  <!-- CANTEEN CHAIRS -->
+
+  <include>
+    <uri>model://Chair(1)</uri>
+    <name>canteen_chair_1</name>
+    <pose>16 -22 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair(1)</uri>
+    <name>canteen_chair_2</name>
+    <pose>20 -22 0 0 0 3.14</pose>
+  </include>
+
+</world>
+</sdf>

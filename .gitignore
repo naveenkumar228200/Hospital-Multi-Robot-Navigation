@@ -1,0 +1,34 @@
+# ROS 2 generated files
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+
+# Gazebo temporary files
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key

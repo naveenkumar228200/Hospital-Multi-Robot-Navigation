@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+
+<model name="ICU1Sign">
+
+  <static>true</static>
+
+  <link name="link">
+
+    <visual name="visual">
+
+  <geometry>
+    <box>
+      <size>2 0.02 1</size>
+    </box>
+  </geometry>
+
+  <material>
+    <script>
+      <uri>model://ICU1Sign/materials/scripts</uri>
+      <uri>model://ICU1Sign/materials/textures</uri>
+      <name>ICU1/Sign</name>
+    </script>
+  </material>
+
+</visual>
+  </link>
+
+</model>
+
+</sdf>
+

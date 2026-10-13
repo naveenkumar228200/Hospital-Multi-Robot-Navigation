@@ -1,0 +1,651 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="smart_hospital_world">
+
+    <!-- ===================== PHYSICS & ENVIRONMENT ===================== -->
+    <physics name="1ms" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system"       name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system"  name="gz::sim::systems::UserCommands"/>
+
+    <gravity>0 0 -9.8</gravity>
+
+    <!-- Ambient light -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- ===================== MODEL: smart_hospital ===================== -->
+    <model name="smart_hospital">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+
+      <!-- ============================================================
+           FLOOR  (20 m wide × 14 m deep)
+      ============================================================ -->
+      <link name="floor">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="floor_col">
+          <geometry><box><size>20 14 0.1</size></box></geometry>
+        </collision>
+        <visual name="floor_vis">
+          <geometry><box><size>20 14 0.1</size></box></geometry>
+          <material>
+            <ambient>0.85 0.85 0.85 1</ambient>
+            <diffuse>0.85 0.85 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           OUTER WALLS  (h = 3 m, t = 0.2 m)
+      ============================================================ -->
+      <!-- top_wall (north, y = +7) -->
+      <link name="top_wall">
+        <pose>0 7 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>20 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>20 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- bottom_wall (south, y = -7) -->
+      <link name="bottom_wall">
+        <pose>0 -7 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>20 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>20 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- left_wall (west, x = -10) -->
+      <link name="left_wall">
+        <pose>-10 0 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.2 14 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.2 14 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- right_wall (east, x = +10) -->
+      <link name="right_wall">
+        <pose>10 0 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.2 14 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.2 14 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           CENTRAL CORRIDOR WALLS  (x = -1 and x = +1, full depth)
+      ============================================================ -->
+      <!-- corridor_wall_left -->
+      <link name="corridor_wall_left">
+        <pose>-1 0 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.2 14 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.2 14 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- corridor_wall_right -->
+      <link name="corridor_wall_right">
+        <pose>1 0 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.2 14 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.2 14 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           LEFT WING DIVIDERS  (x from -10 to -1)
+           divider_1: ICU1 / ICU2  y = +3
+           divider_2: ICU2 / Patient Room  y = 0
+           divider_3: Patient Room / Medical Room  y = -3
+      ============================================================ -->
+      <link name="divider_1">
+        <pose>-5.5 3 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="divider_2">
+        <pose>-5.5 0 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="divider_3">
+        <pose>-5.5 -3 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           RIGHT WING DIVIDERS  (x from +1 to +10)
+           divider_r1: Waiting / Nurse Station  y = +2
+           divider_r2: Nurse Station / Pharmacy  y = -1
+           divider_r3: Pharmacy / Bathroom       y = -3.5
+           divider_r4: Bathroom / Staff Room     y = -5
+      ============================================================ -->
+      <link name="divider_r1">
+        <pose>5.5 2 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="divider_r2">
+        <pose>5.5 -1 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="divider_r3">
+        <pose>5.5 -3.5 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="divider_r4">
+        <pose>5.5 -5 1.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>9 0.2 3</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>9 0.2 3</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           DOORS  (0.9 m wide × 2.1 m tall gap – represented as thin
+                   visual frames; collision removed for robot passage)
+      ============================================================ -->
+      <!-- door_icu1 -->
+      <link name="door_icu1">
+        <pose>-1.1 5 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- door_icu2 -->
+      <link name="door_icu2">
+        <pose>-1.1 1.5 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- door_patient_room -->
+      <link name="door_patient_room">
+        <pose>-1.1 -1.5 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- door_medical_room -->
+      <link name="door_medical_room">
+        <pose>-1.1 -5 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- door_pharmacy -->
+      <link name="door_pharmacy">
+        <pose>1.1 -2.25 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- door_bathroom -->
+      <link name="door_bathroom">
+        <pose>1.1 -4.25 1.05 0 0 1.5708</pose>
+        <visual name="v">
+          <geometry><box><size>0.05 0.9 2.1</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           ICU BED 1  (in ICU 1 room, left wing top)
+           Room centre: x=-5.5, y=5
+      ============================================================ -->
+      <link name="icu_bed_1">
+        <pose>-7 5 0.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.0 0.9 0.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>2.0 0.9 0.6</size></box></geometry>
+          <material><ambient>0.2 0.4 0.8 1</ambient><diffuse>0.2 0.4 0.8 1</diffuse></material>
+        </visual>
+      </link>
+      <!-- icu bed 1 pillow -->
+      <link name="icu_bed_1_pillow">
+        <pose>-6.1 5 0.85 0 0 0</pose>
+        <visual name="v">
+          <geometry><box><size>0.5 0.8 0.1</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           ICU BED 2  (in ICU 2 room)
+           Room centre: x=-5.5, y=1.5
+      ============================================================ -->
+      <link name="icu_bed_2">
+        <pose>-7 1.5 0.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.0 0.9 0.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>2.0 0.9 0.6</size></box></geometry>
+          <material><ambient>0.2 0.4 0.8 1</ambient><diffuse>0.2 0.4 0.8 1</diffuse></material>
+        </visual>
+      </link>
+      <link name="icu_bed_2_pillow">
+        <pose>-6.1 1.5 0.85 0 0 0</pose>
+        <visual name="v">
+          <geometry><box><size>0.5 0.8 0.1</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           PATIENT BED  (Patient Room, x=-5.5, y=-1.5)
+      ============================================================ -->
+      <link name="patient_bed_1">
+        <pose>-6 -1.5 0.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.0 0.9 0.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>2.0 0.9 0.6</size></box></geometry>
+          <material><ambient>0.1 0.5 0.2 1</ambient><diffuse>0.1 0.5 0.2 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           WHEELCHAIR  (Patient Room corner)
+      ============================================================ -->
+      <link name="wheelchair_1">
+        <pose>-3.5 -2.5 0.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.65 0.65 0.9</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.65 0.65 0.9</size></box></geometry>
+          <material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           MEDICAL ROOM BED / EXAM TABLE  (x=-5.5, y=-5)
+      ============================================================ -->
+      <link name="exam_table">
+        <pose>-6 -5 0.5 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.8 0.7 0.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>1.8 0.7 0.6</size></box></geometry>
+          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           NURSE STATION TABLE & CHAIR  (right wing, y=0.5)
+      ============================================================ -->
+      <link name="nurse_station_table">
+        <pose>5.5 0.5 0.75 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.6 0.8 0.75</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>1.6 0.8 0.75</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="nurse_station_chair">
+        <pose>5.5 -0.2 0.45 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.5 0.5 0.45</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 0.45</size></box></geometry>
+          <material><ambient>0.1 0.1 0.6 1</ambient><diffuse>0.1 0.1 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           WAITING AREA CHAIRS  (right wing top, y=4.5)
+           3 chairs in a row
+      ============================================================ -->
+      <link name="chair_1">
+        <pose>3.5 4.5 0.45 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.55 0.55 0.45</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.55 0.55 0.45</size></box></geometry>
+          <material><ambient>0.1 0.2 0.6 1</ambient><diffuse>0.1 0.2 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="chair_2">
+        <pose>5.0 4.5 0.45 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.55 0.55 0.45</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.55 0.55 0.45</size></box></geometry>
+          <material><ambient>0.1 0.2 0.6 1</ambient><diffuse>0.1 0.2 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="chair_3">
+        <pose>6.5 4.5 0.45 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.55 0.55 0.45</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.55 0.55 0.45</size></box></geometry>
+          <material><ambient>0.1 0.2 0.6 1</ambient><diffuse>0.1 0.2 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           STAFF ROOM TABLE & CHAIRS  (right wing bottom, y=-6)
+      ============================================================ -->
+      <link name="table_1">
+        <pose>5.5 -6 0.75 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.8 0.9 0.75</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>1.8 0.9 0.75</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="staff_chair_1">
+        <pose>4.2 -6 0.45 0 0 0</pose>
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 0.45</size></box></geometry>
+          <material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="staff_chair_2">
+        <pose>6.8 -6 0.45 0 0 0</pose>
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 0.45</size></box></geometry>
+          <material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           PHARMACY / STORAGE SHELVES  (right wing mid, y=-2.25)
+      ============================================================ -->
+      <link name="pharmacy_shelf_1">
+        <pose>3.5 -2.25 0.8 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.4 1.5 1.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.4 1.5 1.6</size></box></geometry>
+          <material><ambient>0.5 0.7 0.5 1</ambient><diffuse>0.5 0.7 0.5 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="pharmacy_shelf_2">
+        <pose>5.0 -2.25 0.8 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.4 1.5 1.6</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.4 1.5 1.6</size></box></geometry>
+          <material><ambient>0.5 0.7 0.5 1</ambient><diffuse>0.5 0.7 0.5 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           BP CART / MEDICAL CART  (ICU 1 room)
+      ============================================================ -->
+      <link name="bp_cart_1">
+        <pose>-4.5 5 0.6 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.5 0.5 1.2</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 1.2</size></box></geometry>
+          <material><ambient>0.6 0.6 0.7 1</ambient><diffuse>0.6 0.6 0.7 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           BATHROOM TOILET & SINK  (right wing, y=-4.25)
+      ============================================================ -->
+      <link name="toilet_1">
+        <pose>9 -4.25 0.4 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.5 0.7 0.4</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.5 0.7 0.4</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="sink_1">
+        <pose>7.5 -4.25 0.85 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.5 0.4 0.15</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>0.5 0.4 0.15</size></box></geometry>
+          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           AMBULANCE BAY DOOR (north wall centre opening marker)
+      ============================================================ -->
+      <link name="ambulance_bay_marker">
+        <pose>0 6.95 1.5 0 0 0</pose>
+        <visual name="v">
+          <geometry><box><size>3.5 0.1 3.0</size></box></geometry>
+          <material><ambient>0.55 0.35 0.1 1</ambient><diffuse>0.55 0.35 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- ============================================================
+           CEILING LIGHTS  (point lights, one per room)
+      ============================================================ -->
+      <light type="point" name="light_icu1">
+        <pose>-5.5 5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_icu2">
+        <pose>-5.5 1.5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_patient">
+        <pose>-5.5 -1.5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_medical">
+        <pose>-5.5 -5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_waiting">
+        <pose>5.5 4.5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_nurse">
+        <pose>5.5 0.5 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_pharmacy">
+        <pose>5.5 -2.25 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>6</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+      <light type="point" name="light_corridor">
+        <pose>0 0 2.8 0 0 0</pose>
+        <diffuse>1 1 1 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+        <attenuation><range>14</range><constant>0.5</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+        <cast_shadows>false</cast_shadows>
+      </light>
+
+    </model>
+
+    <!-- ============================================================
+         ROBOT (differential drive, starts in corridor)
+    ============================================================ -->
+    <model name="hospital_robot">
+      <pose>0 2 0.18 0 0 0</pose>
+
+      <link name="chassis">
+        <inertial>
+          <mass>10.0</mass>
+          <inertia><ixx>0.3</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.4</iyy><iyz>0</iyz><izz>0.3</izz></inertia>
+        </inertial>
+        <collision name="chassis_col">
+          <geometry><box><size>0.6 0.4 0.2</size></box></geometry>
+        </collision>
+        <visual name="chassis_vis">
+          <geometry><box><size>0.6 0.4 0.2</size></box></geometry>
+          <material><ambient>0.0 0.5 0.8 1</ambient><diffuse>0.0 0.5 0.8 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- Left wheel -->
+      <link name="left_wheel">
+        <pose>0 0.22 0.18 1.5708 0 0</pose>
+        <inertial><mass>1.0</mass><inertia><ixx>0.01</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.01</iyy><iyz>0</iyz><izz>0.01</izz></inertia></inertial>
+        <collision name="c"><geometry><cylinder><radius>0.18</radius><length>0.05</length></cylinder></geometry></collision>
+        <visual name="v">
+          <geometry><cylinder><radius>0.18</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- Right wheel -->
+      <link name="right_wheel">
+        <pose>0 -0.22 0.18 1.5708 0 0</pose>
+        <inertial><mass>1.0</mass><inertia><ixx>0.01</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.01</iyy><iyz>0</iyz><izz>0.01</izz></inertia></inertial>
+        <collision name="c"><geometry><cylinder><radius>0.18</radius><length>0.05</length></cylinder></geometry></collision>
+        <visual name="v">
+          <geometry><cylinder><radius>0.18</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- Caster front -->
+      <link name="caster_front">
+        <pose>0.25 0 0.05 0 0 0</pose>
+        <inertial><mass>0.5</mass><inertia><ixx>0.001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.001</iyy><iyz>0</iyz><izz>0.001</izz></inertia></inertial>
+        <collision name="c"><geometry><sphere><radius>0.05</radius></sphere></geometry></collision>
+        <visual name="v"><geometry><sphere><radius>0.05</radius></sphere></geometry><material><ambient>0.4 0.4 0.4 1</ambient></material></visual>
+      </link>
+
+      <!-- Caster rear -->
+      <link name="caster_rear">
+        <pose>-0.25 0 0.05 0 0 0</pose>
+        <inertial><mass>0.5</mass><inertia><ixx>0.001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.001</iyy><iyz>0</iyz><izz>0.001</izz></inertia></inertial>
+        <collision name="c"><geometry><sphere><radius>0.05</radius></sphere></geometry></collision>
+        <visual name="v"><geometry><sphere><radius>0.05</radius></sphere></geometry><material><ambient>0.4 0.4 0.4 1</ambient></material></visual>
+      </link>
+
+      <!-- Joints -->
+      <joint name="left_wheel_joint" type="revolute">
+        <parent>chassis</parent><child>left_wheel</child>
+        <axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis>
+      </joint>
+
+      <joint name="right_wheel_joint" type="revolute">
+        <parent>chassis</parent><child>right_wheel</child>
+        <axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis>
+      </joint>
+
+      <joint name="caster_front_joint" type="ball">
+        <parent>chassis</parent><child>caster_front</child>
+      </joint>
+
+      <joint name="caster_rear_joint" type="ball">
+        <parent>chassis</parent><child>caster_rear</child>
+      </joint>
+
+      <!-- Differential drive plugin -->
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.44</wheel_separation>
+        <wheel_radius>0.18</wheel_radius>
+        <odom_publish_frequency>10</odom_publish_frequency>
+        <topic>/cmd_vel</topic>
+        <odom_topic>/odom</odom_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_footprint</child_frame_id>
+      </plugin>
+
+      <!-- 2-D Lidar for navigation -->
+      <link name="lidar_link">
+        <pose>0.3 0 0.25 0 0 0</pose>
+        <visual name="v">
+          <geometry><cylinder><radius>0.05</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.9 0.2 0.2 1</ambient><diffuse>0.9 0.2 0.2 1</diffuse></material>
+        </visual>
+        <sensor name="lidar" type="gpu_lidar">
+          <update_rate>10</update_rate>
+          <lidar>
+            <scan>
+              <horizontal>
+                <samples>640</samples><resolution>1</resolution>
+                <min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle>
+              </horizontal>
+            </scan>
+            <range><min>0.08</min><max>10.0</max><resolution>0.01</resolution></range>
+          </lidar>
+          <topic>/scan</topic>
+          <gz_frame_id>lidar_link</gz_frame_id>
+        </sensor>
+      </link>
+
+      <joint name="lidar_joint" type="fixed">
+        <parent>chassis</parent><child>lidar_link</child>
+      </joint>
+
+    </model>
+
+  </world>
+</sdf>

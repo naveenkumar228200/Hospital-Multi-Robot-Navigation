@@ -1,0 +1,13 @@
+material TubeLight/Light_Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture TubeLight_Albedo.png
+      }
+    }
+  }
+}

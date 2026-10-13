@@ -1,0 +1,2580 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+
+<world name="smart_hospital">
+  <plugin
+    filename="gz-sim-physics-system"
+    name="gz::sim::systems::Physics">
+  </plugin>
+
+  <plugin
+    filename="gz-sim-user-commands-system"
+    name="gz::sim::systems::UserCommands">
+  </plugin>
+
+  <plugin
+    filename="gz-sim-scene-broadcaster-system"
+    name="gz::sim::systems::SceneBroadcaster">
+  </plugin>
+
+  <plugin
+    filename="gz-sim-sensors-system"
+    name="gz::sim::systems::Sensors">
+    <render_engine>ogre2</render_engine>
+  </plugin>
+
+  <plugin
+    filename="gz-sim-imu-system"
+    name="gz::sim::systems::Imu">
+  </plugin>
+<!-- Visitor 11 -->
+<actor name="visitor_11">
+
+  <pose>14 1 1 0 0 0</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>14 1 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Walk straight (East direction) -->
+      <waypoint>
+        <time>3</time>
+        <pose>2 1 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>3.1</time>
+        <pose>2 1 0 0 0 -3.14159</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>6</time>
+        <pose>14 1 0 0 0 -3.14159</pose>
+      </waypoint>
+
+      <!-- Face original direction -->
+      <waypoint>
+        <time>6.1</time>
+        <pose>14 1 0 0 0 3.14159</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+<!-- Visitor 10-->
+<actor name="visitor_10">
+
+  <pose>14 8 1 0 0 0</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>14 8 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Walk straight (East direction) -->
+      <waypoint>
+        <time>4</time>
+        <pose>14 -8 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>4.1</time>
+        <pose>14 -8 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>7</time>
+        <pose>14 8 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Face original direction -->
+      <waypoint>
+        <time>7.1</time>
+        <pose>12 11 0 0 0 0</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+<!-- Visitor 9 -->
+<actor name="visitor_9">
+
+  <pose>9 9 1 0 0 0</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>9 9 0 0 0 0</pose>
+      </waypoint>
+
+      <!-- Walk straight (East direction) -->
+      <waypoint>
+        <time>3</time>
+        <pose>18 9 0 0 0 0</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>3.1</time>
+        <pose>18 9 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>6</time>
+        <pose>9 9 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Face original direction -->
+      <waypoint>
+        <time>6.1</time>
+        <pose>12 11 0 0 0 0</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+
+<!--visitor 8 -->
+<actor name="visitor_8">
+<pose>6 -8 1 0 0 0</pose>
+<skin>
+<filename>
+/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+</filename>
+</skin>
+<animation name="walking">
+<filename>
+/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+</filename>
+<interpolate_x>true</interpolate_x>
+</animation>
+<script>
+<loop>true</loop>
+<trajectory id="0" type="walking">
+<!-- Start -->
+<waypoint>
+<time>0</time>
+<pose>6 -8 0 0 0 1.57</pose>
+</waypoint>
+<!-- Walk straight -->
+<waypoint>
+<time>3</time>
+<pose>6 2 0 0 0 1.57</pose>
+</waypoint>
+<!-- Turn around -->
+<waypoint>
+<time>3.1</time>
+<pose>6 2 0 0 0 -1.57</pose>
+</waypoint>
+<!-- Return -->
+<waypoint>
+<time>6</time>
+<pose>6 -8 0 0 0 -1.57</pose>
+</waypoint>
+<!-- Face original direction -->
+<waypoint>
+<time>6.1</time>
+<pose>6 -8 0 0 0 0</pose>
+</waypoint>
+</trajectory>
+</script>
+</actor>
+<!-- Visitor near top corridor -->
+<actor name="visitor_5">
+
+  <pose>-15 5 1 0 0 1.57</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/actor - relative paths/meshes/walk.dae
+    </filename>
+    <scale>1.0</scale>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/actor - relative paths/meshes/walk.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+  <!-- Start -->
+  <waypoint>
+    <time>0</time>
+    <pose>-15 5 0 0 0 3.14</pose>
+  </waypoint>
+
+  <!-- Move West for 3 seconds -->
+  <waypoint>
+    <time>3</time>
+    <pose>-21 5 0 0 0 3.14</pose>
+  </waypoint>
+
+  <!-- Turn around -->
+  <waypoint>
+    <time>3.1</time>
+    <pose>-21 5 0 0 0 0</pose>
+  </waypoint>
+
+  <!-- Return -->
+  <waypoint>
+    <time>6</time>
+    <pose>-15 5 0 0 0 0</pose>
+  </waypoint>
+
+  <!-- Face West again -->
+  <waypoint>
+    <time>6.1</time>
+    <pose>-15 5 0 0 0 3.14</pose>
+  </waypoint>
+
+</trajectory>
+</script>
+</actor>
+<!-- Reception visitor -->
+<actor name="visitor_reception">
+
+  <pose>-21 8 1 0 0 3.14159</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/actor - relative paths/meshes/walk.dae
+    </filename>
+    <scale>1.0</scale>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/actor - relative paths/meshes/walk.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>-21 8 0 0 0 -3.14159</pose>
+      </waypoint>
+
+      <!-- Walk East -->
+      <waypoint>
+        <time>5</time>
+        <pose>2 8 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>5.1</time>
+        <pose>2 8 0 0 0 -3.14159</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>7</time>
+        <pose>-21 8 0 0 0 -3.14159</pose>
+      </waypoint>
+
+      <!-- Face original direction -->
+      <waypoint>
+        <time>7.1</time>
+        <pose>-21 8 0 0 0 3.14159</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+ <!-- LIGHT -->
+  <light name="sun_light" type="directional">
+    <cast_shadows>true</cast_shadows>
+    <pose>0 0 20 0 0 0</pose>
+    <diffuse>1 1 1 1</diffuse>
+    <specular>0.2 0.2 0.2 1</specular>
+    <direction>-0.5 0.1 -0.9</direction>
+  </light>
+  <!--Tubelight-->
+  <!-- ===================== TUBE LIGHT MODEL ===================== -->
+
+<model name="tube_light_1">
+  <static>true</static>
+
+  <pose>-5.5 5 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <!-- Tube body -->
+
+    <visual name="tube_visual">
+
+      <geometry>
+        <box>
+          <size>1.2 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+
+    </visual>
+
+    <!-- Light source -->
+
+    <light name="tube_light" type="point">
+
+      <pose>0 0 0 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <attenuation>
+        <range>8</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+
+    </light>
+
+  </link>
+
+</model>
+  
+<!-- FLOOR -->
+<model name="floor">
+
+  <static>true</static>
+
+  <link name="link">
+
+    <!-- Collision -->
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>60 40 0.1</size>
+        </box>
+      </geometry>
+    </collision>
+
+
+    <!-- Visual -->
+    <visual name="visual">
+
+      <geometry>
+        <box>
+          <size>60 40 0.1</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.78 0.88 0.96 1</ambient>
+        <diffuse>0.82 0.92 1 1</diffuse>
+        <specular>1 1 1 1</specular>
+        <emissive>0.02 0.02 0.02 1</emissive>
+      </material>
+
+    </visual>
+
+  </link>
+
+</model>
+
+
+<!-- Visitor Actor -->
+
+<actor name="visitor_7">
+
+  <pose>8 -6 1 0 0 -1.57</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae
+    </filename>
+
+    <interpolate_x>true</interpolate_x>
+
+  </animation>
+
+  <script>
+
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <waypoint>
+        <time>0</time>
+        <pose>8 -6 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>3</time>
+        <pose>8 -14 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>3.1</time>
+        <pose>8 -14 0 0 0 1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>6</time>
+        <pose>8 -6 0 0 0 1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>6.1</time>
+        <pose>8 -6 0 0 0 -1.57</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+   
+  <!-- OUTER WALLS -->
+
+  <model name="top_wall">
+    <static>true</static>
+    <pose>0 20 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.3 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>60 0.3 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="bottom_wall">
+    <static>true</static>
+    <pose>0 -20 1.5 0 0 0</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>60 0.3 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>60 0.3 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="left_wall">
+    <static>true</static>
+    <pose>-30 0 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>40 0.3 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>40 0.3 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="right_wall">
+    <static>true</static>
+    <pose>30 0 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>40 0.3 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>40 0.3 3</size>
+          </box>
+        </geometry>
+
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>      
+<!-- ===================================================== -->
+<!-- TOP CORRIDOR WALL WITH ROOM ENTRANCES -->
+<!-- ===================================================== -->
+
+<!-- LEFT TOP WALL -->
+<model name="corridor_top_left">
+  <static>true</static>
+  <pose>-22 6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- MIDDLE TOP WALL -->
+<model name="corridor_top_middle">
+  <static>true</static>
+  <pose>-5 6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>10 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>10 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- RIGHT TOP WALL -->
+<model name="corridor_top_right">
+  <static>true</static>
+  <pose>16 6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>18 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>18 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
+<!-- ===================================================== -->
+<!-- BOTTOM CORRIDOR WALL WITH ROOM ENTRANCES -->
+<!-- ===================================================== -->
+
+<!-- LEFT BOTTOM WALL -->
+<model name="corridor_bottom_left">
+  <static>true</static>
+  <pose>-22 -6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- MIDDLE BOTTOM WALL -->
+<model name="corridor_bottom_middle">
+  <static>true</static>
+  <pose>-3 -6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- RIGHT BOTTOM WALL -->
+<model name="corridor_bottom_right">
+  <static>true</static>
+  <pose>20 -6 1.5 0 0 0</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>12 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+  <!-- ROOM DIVIDERS -->
+
+  <model name="divider_1">
+    <static>true</static>
+    <pose>-20 13 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="divider_2">
+    <static>true</static>
+    <pose>-8 13 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+
+  <model name="divider_3">
+    <static>true</static>
+    <pose>4 13 1.5 0 0 1.57</pose>
+
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+
+      </collision>
+
+      <visual name="visual">
+
+        <geometry>
+          <box>
+            <size>14 0.2 3</size>
+          </box>
+        </geometry>
+       <material>
+          <ambient>0.85 0.92 1 1</ambient>
+          <diffuse>0.85 0.92 1 1</diffuse>
+        </material>
+
+      </visual>
+
+    </link>
+  </model>
+<!-- RIGHT SIDE ROOM DIVIDERS -->
+
+<!-- Divider between bathroom  Area and canteen Station -->
+<model name="right_divider_1">
+  <static>true</static>
+  <pose>20 -13 1.5 0 0 1.57</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Divider between waiting room and canteen -->
+<model name="right_divider_2">
+  <static>true</static>
+  <pose>8 -13 1.5 0 0 1.57</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Divider between Pharmacy and Staff Room -->
+<model name="right_divider_3">
+  <static>true</static>
+  <pose>-15 -13 1.5 0 0 1.57</pose>
+
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>14 0.2 3</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>0.85 0.92 1 1</ambient>
+        <diffuse>0.85 0.92 1 1</diffuse>
+      </material>
+    </visual>
+  </link>
+</model>
+  <!-- ICU BED 1 -->
+
+  <include>
+    <uri>model://CGMClassic</uri>
+    <name>icu_bed_1</name>
+    <pose>-25 13 0 0 0 1.57</pose>
+  </include>
+
+  <!-- ICU BED 2 -->
+
+  <include>
+    <uri>model://CGMClassic</uri>
+    <name>icu_bed_2</name>
+    <pose>-14 13 0 0 0 1.57</pose>
+  </include>
+
+  <!-- PATIENT BED -->
+
+  <include>
+    <uri>model://ClassCBed</uri>
+    <name>patient_bed_1</name>
+    <pose>-2 13 0 0 0 1.57</pose>
+  </include>
+
+  <!-- WHEELCHAIR -->
+
+  <include>
+    <uri>model://PatientWheelChair</uri>
+    <name>wheelchair_1</name>
+    <pose>5 10 0 0 0 -1.57</pose>
+  </include>
+
+  <!-- WAITING AREA CHAIRS -->
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>chair_1</name>
+    <pose>-10 -12 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>chair_2</name>
+    <pose>-8 -12 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>chair_3</name>
+    <pose>-6 -12 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>chair_4</name>
+    <pose>-4 -12 0 0 0 0</pose>
+  </include>
+  <!--waiting_rug -->
+   <include>
+     <name>waiting_rug</name>
+     <uri>model://rug_ivory_2m</uri>
+     <pose>6 0 0 0 0 0</pose>
+   </include>
+
+  <!-- RECEPTION TABLE -->
+
+  <include>
+    <uri>model://DiningTable</uri>
+    <name>reception_table</name>
+    <pose>-24 -12 0 0 0 0</pose>
+  </include>
+
+  <!-- STORAGE -->
+
+  <include>
+    <uri>model://StorageRack</uri>
+    <name>storage_rack_1</name>
+    <pose>18 12 0 0 0 0</pose>
+  </include>
+
+  <!-- MEDICAL CARTS -->
+
+  <include>
+    <uri>model://BMWCart</uri>
+    <name>medical_cart_1</name>
+    <pose>12 11 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://BPCart</uri>
+    <name>medical_cart_2</name>
+    <pose>14 11 0 0 0 0</pose>
+  </include>
+
+  <!-- PATIENT -->
+
+  <include>
+    <uri>model://ElderLadyPatient</uri>
+    <name>elder_patient_1</name>
+    <pose>-9 -12 0 0 0 1.57</pose>
+  </include>
+
+  <!-- NURSE -->
+
+  <include>
+    <uri>model://Nurse</uri>
+    <name>nurse_1</name>
+    <pose>2 8 0 0 0 -1.57</pose>
+  </include>
+
+  <!-- BEDSIDE TABLE -->
+
+  <include>
+    <uri>model://BedsideTable2</uri>
+    <name>bedside_table_1</name>
+    <pose>-23 10 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://BedsideTable2</uri>
+    <name>bedside_table_2</name>
+    <pose>-12 10 0 0 0 0</pose>
+  </include>
+
+  <!-- BATHROOM -->
+
+  <include>
+    <uri>model://Bathtub</uri>
+    <name>bathroom_1</name>
+    <pose>24 -14 0 0 0 0</pose>
+  </include>
+<!-- TOILET -->
+<include>
+  <uri>model://StandardToilet</uri>
+  <name>toilet_1</name>
+  <pose>21 -14 0 0 0 1.57</pose>
+  <static>true</static>
+</include>
+  <!-- CANTEEN TABLE -->
+
+  <include>
+    <uri>model://DiningTable</uri>
+    <name>canteen_table_1</name>
+    <pose>15 -12 0 0 0 0</pose>
+  </include>
+
+  <!-- CANTEEN CHAIRS -->
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>canteen_chair_1</name>
+    <pose>13 -12 0 0 0 0</pose>
+  </include>
+
+  <include>
+    <uri>model://Chair</uri>
+    <name>canteen_chair_2</name>
+    <pose>17 -12 0 0 0 3.14</pose>
+  </include>
+
+  <!-- AMBULANCE -->
+
+  <include>
+    <uri>model://Ambulance2</uri>
+    <name>ambulance_1</name>
+    <pose>24 -4 0 0 0 3.14</pose>
+  </include>
+  <!-- NURSE STATION -->
+ <include>
+  <name>nurse_table</name>
+  <uri>model://DiningTable</uri>
+  <pose>2 -2 0 0 0 0</pose>
+ </include>
+
+ <include>
+  <name>nurse_chair</name>
+  <uri>model://Chair</uri>
+  <pose>2 -1.5 0 0 0 0</pose>
+ </include>
+
+ <include>
+  <name>bp_cart_station</name>
+  <uri>model://BPCart</uri>
+  <pose>1.5 -2.5 0 0 0 0</pose>
+ </include>
+<!-- ================================================= -->
+<!-- ICU ROOM LIGHTS -->
+<!-- ================================================= -->
+
+<!-- ICU Light 1 -->
+<model name="icu_light_1">
+  <static>true</static>
+
+  <!-- x y z roll pitch yaw -->
+  <pose>-20 13 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <!-- Tube shape -->
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.2 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Actual light -->
+    <light name="light_source" type="point">
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.3 0.3 0.3 1</specular>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+  </link>
+</model>
+
+<!-- ICU Light 2 -->
+<model name="icu_light_2">
+  <static>true</static>
+
+  <pose>-22 6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.2 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light_source" type="point">
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.3 0.3 0.3 1</specular>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+  </link>
+</model> 
+<!-- ENTRANCE LIGHT 1 -->
+<model name="entrance_light_1">
+  <static>true</static>
+
+  <!-- Left side -->
+  <pose>-30 -10 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <!-- Vertical Tube -->
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="tube_light" type="point">
+      <pose>0 0 0 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <attenuation>
+        <range>12</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+  </link>
+</model>
+
+<!-- ENTRANCE LIGHT 2 -->
+<model name="entrance_light_2">
+  <static>true</static>
+
+  <!-- Slightly shifted -->
+  <pose>-30 10 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <!-- Vertical Tube -->
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="tube_light" type="point">
+      <pose>0 0 0 0 0 0</pose>
+
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <attenuation>
+        <range>12</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+  </link>
+</model>
+<!-- TOP WALL LIGHT 1 -->
+<model name="top_light_1">
+  <static>true</static>
+  <pose>-10 20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light1" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- TOP WALL LIGHT 2 -->
+<model name="top_light_2">
+  <static>true</static>
+  <pose>-8 20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light2" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- TOP WALL LIGHT 3 -->
+<model name="top_light_3">
+  <static>true</static>
+  <pose>-4 20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light3" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- TOP WALL LIGHT 4 -->
+<model name="top_light_4">
+  <static>true</static>
+  <pose>0 20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light4" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+<!-- BOTTOM WALL LIGHT 1 -->
+<model name="bottom_light_1">
+  <static>true</static>
+  <pose>-12 -20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light1" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- BOTTOM WALL LIGHT 2 -->
+<model name="bottom_light_2">
+  <static>true</static>
+  <pose>-8 -20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light2" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- BOTTOM WALL LIGHT 3 -->
+<model name="bottom_light_3">
+  <static>true</static>
+  <pose>-4 -20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light3" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- BOTTOM WALL LIGHT 4 -->
+<model name="bottom_light_4">
+  <static>true</static>
+  <pose>0 -20 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="tube_visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light4" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+<!-- ================================================= -->
+<!-- SINGLE LIGHT : RIGHT SIDE ROOM -->
+<!-- ================================================= -->
+
+<model name="room_light_right_1">
+  <static>true</static>
+
+  <pose>22 -6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- 2 LIGHTS : corridor_bottom_middle -->
+<!-- ================================================= -->
+
+<model name="corridor_middle_light_1">
+  <static>true</static>
+
+  <pose>-6 -6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light1" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<model name="corridor_middle_light_2">
+  <static>true</static>
+
+  <pose>0 -6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light2" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- 2 LIGHTS : corridor_bottom_right -->
+<!-- ================================================= -->
+
+<model name="corridor_right_light_1">
+  <static>true</static>
+
+  <pose>17 -6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light3" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<model name="corridor_right_light_2">
+  <static>true</static>
+
+  <pose>23 -6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light4" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- LIGHT : right_divider_1 -->
+<!-- ================================================= -->
+
+<model name="divider_light_1">
+  <static>true</static>
+
+  <pose>20 -13 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light5" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- LIGHT : right_divider_2 -->
+<!-- ================================================= -->
+
+<model name="divider_light_2">
+  <static>true</static>
+
+  <pose>8 -13 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <light name="light6" type="point">
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+  </link>
+</model>
+<!-- ================================================= -->
+<!-- LIGHT : right_divider_3 -->
+<!-- ================================================= -->
+
+<model name="divider_light_3">
+  <static>true</static>
+
+  <pose>-15 -13 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <!-- Vertical Tube -->
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="light1" type="point">
+
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- LIGHT : corridor_top_right -->
+<!-- ================================================= -->
+
+<model name="corridor_top_right_light">
+  <static>true</static>
+
+  <pose>16 6 2.8 0 0 0</pose>
+
+  <link name="link">
+
+    <!-- Horizontal Tube -->
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>1.5 0.08 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="light2" type="point">
+
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>9</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+
+    </light>
+
+  </link>
+</model>
+
+<!-- ================================================= -->
+<!-- 2 LIGHTS : right_wall -->
+<!-- ================================================= -->
+
+<!-- Right Wall Light 1 -->
+<model name="right_wall_light_1">
+  <static>true</static>
+
+  <pose>30 10 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <!-- Vertical Tube -->
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="light3" type="point">
+
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+
+    </light>
+
+  </link>
+</model>
+
+<!-- Right Wall Light 2 -->
+<model name="right_wall_light_2">
+  <static>true</static>
+
+  <pose>30 -10 2.8 0 0 1.57</pose>
+
+  <link name="link">
+
+    <!-- Vertical Tube -->
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>0.08 1.5 0.08</size>
+        </box>
+      </geometry>
+
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <emissive>1 1 1 1</emissive>
+      </material>
+    </visual>
+
+    <!-- Light -->
+    <light name="light4" type="point">
+
+      <diffuse>1 1 1 1</diffuse>
+
+      <attenuation>
+        <range>10</range>
+        <constant>0.4</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+
+      <cast_shadows>false</cast_shadows>
+
+    </light>
+
+  </link>
+</model>
+<!-- Electronics Recycling Bin -->
+<include>
+  <uri>model://ElectronicsRecycling</uri>
+  <name>electronics_bin_1</name>
+  <pose>-16 -10 0 0 0 0</pose>
+</include>
+
+
+<!-- Female Visitor -->
+<include>
+  <uri>model://FemaleVisitor</uri>
+  <name>female_visitor_1</name>
+  <pose>-7 -10 0 0 0 1.57</pose>
+</include>
+
+<!-- Female Visitor Sitting -->
+<include>
+  <uri>model://FemaleVisitorSit</uri>
+  <name>female_visitor_sit_1</name>
+  <pose>-8 -12 0 0 0 0</pose>
+</include>
+
+<!-- Medical Freezer -->
+<include>
+  <uri>model://FreezerComp</uri>
+  <name>medical_freezer_1</name>
+  <pose>20 12 0 0 0 1.57</pose>
+</include>
+
+
+
+<!-- IV STAND ICU 1 -->
+<include>
+  <uri>model://IVStand</uri>
+  <name>ivstand_1</name>
+  <pose>-24 11 0 0 0 0</pose>
+</include>
+
+<!-- IV STAND ICU 2 -->
+<include>
+  <uri>model://IVStand</uri>
+  <name>ivstand_2</name>
+  <pose>-13 11 0 0 0 0</pose>
+</include>
+
+<!-- IV STAND PATIENT ROOM -->
+<include>
+  <uri>model://IVStand</uri>
+  <name>ivstand_3</name>
+  <pose>-1 11 0 0 0 0</pose>
+</include>
+
+<!-- MALE VISITORS -->
+
+<include>
+  <uri>model://MaleVisitor</uri>
+  <name>male_visitor_1</name>
+  <pose>-8 -8 1 0 0 1.57</pose>
+</include>
+<!--js
+<include>
+  <uri>model://MaleVisitor</uri>
+  <name>male_visitor_2</name>
+  <pose>10 -6 1 0 0 -1.57</pose>
+</include>
+-->
+<include>
+  <uri>model://MaleVisitor</uri>
+  <name>male_visitor_3</name>
+  <pose>15 4 1 0 0 -1.57</pose>
+</include>
+
+<include>
+  <uri>model://MaleVisitorSit</uri>
+  <name>male_visitor_sit_1</name>
+  <pose>16 -10 0 0 0 3.14</pose>
+</include>
+
+<include>
+  <uri>model://MaleVisitorSit</uri>
+  <name>male_visitor_sit_2</name>
+  <pose>-16 16 0 0 0 0</pose>
+</include>
+<!-- MINI SOFAS -->
+
+<!-- ICU 1 -->
+<include>
+  <uri>model://MiniSofa</uri>
+  <name>mini_sofa_1</name>
+  <pose>-27 16 0 0 0 1.57</pose>
+</include>
+
+<!-- ICU 2 -->
+<include>
+  <uri>model://MiniSofa</uri>
+  <name>mini_sofa_2</name>
+  <pose>-16 16 0 0 0 1.57</pose>
+</include>
+
+<!-- Patient Room -->
+<include>
+  <uri>model://MiniSofa</uri>
+  <name>mini_sofa_3</name>
+  <pose>-4 16 0 0 0 1.57</pose>
+</include>
+
+<!-- Waiting Area -->
+<include>
+  <uri>model://MiniSofa</uri>
+  <name>mini_sofa_4</name>
+  <pose>-14 -12 0 0 0 0</pose>
+</include>
+
+<!-- Canteen -->
+<include>
+  <uri>model://MiniSofa</uri>
+  <name>mini_sofa_5</name>
+  <pose>16 -10 0 0 0 3.14</pose>
+</include>
+<!-- NURSES -->
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_2</name>
+  <pose>8 3 0 0 0 0</pose>
+</include>
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_3</name>
+  <pose>8 2 0 0 0 1.57</pose>
+</include>
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_4</name>
+  <pose>-5 4 0 0 0 -1.57</pose>
+</include>
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_5</name>
+  <pose>12 10 0 0 0 3.14</pose>
+</include>
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_6</name>
+  <pose>-18 8 0 0 0 0</pose>
+</include>
+
+<include>
+  <uri>model://Nurse</uri>
+  <name>nurse_7</name>
+  <pose>23 -7 0 0 0 1.57</pose>
+</include>
+<!-- DOCTORS -->
+
+<include>
+  <uri>model://OpScrubs</uri>
+  <name>doctor_1</name>
+  <pose>-22 13 0 0 0 1.57</pose>
+</include>
+
+<include>
+  <uri>model://OpScrubs</uri>
+  <name>doctor_2</name>
+  <pose>-10 13 0 0 0 1.57</pose>
+</include>
+
+<include>
+  <uri>model://OpScrubs</uri>
+  <name>doctor_3</name>
+  <pose>0 10 0 0 0 0</pose>
+</include>
+
+<include>
+  <uri>model://OpScrubs</uri>
+  <name>doctor_4</name>
+  <pose>16 8 0 0 0 -1.57</pose>
+</include>
+<actor name="walking_person_1">
+  
+  <pose>5 0 0 0 0 0</pose>
+
+  <skin>
+    <filename>
+      model://WalkingPerson/meshes/walking.dae
+    </filename>
+    <scale>1.0</scale>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      model://WalkingPerson/meshes/walking.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <waypoint>
+        <time>0</time>
+        <pose>5 0 0 0 0 1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>8</time>
+        <pose>20  0 0 0 0 1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>15</time>
+        <pose>20 10 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>25</time>
+        <pose>3 10 0 0 0 1.57</pose>
+      </waypoint>
+
+      <waypoint>
+        <time>35</time>
+        <pose>3 0 0 0 0 -1.57</pose>
+      </waypoint>
+
+    </trajectory>
+
+  </script>
+
+</actor>
+
+<!-- corridor to nurse_table visitor -->
+<actor name="visitor_1">
+
+  <pose>-5 -2 1 0 0 0</pose>
+
+  <skin>
+    <filename>/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae</filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae</filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>-5 -2 0 0 0 0</pose>
+      </waypoint>
+
+      <!-- Walk forward -->
+      <waypoint>
+        <time>5</time>
+        <pose>2 -2 0 0 0 0</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>5.1</time>
+        <pose>2 -2 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>10</time>
+        <pose>-5 -2 0 0 0 3.14159</pose>
+      </waypoint>
+
+      <!-- Face forward again -->
+      <waypoint>
+        <time>10.1</time>
+        <pose>-5 -2 0 0 0 0</pose>
+      </waypoint>
+
+    </trajectory>
+  </script>
+
+</actor>
+<!-- nurse4 to icu visitor -->
+<actor name="casual_female_1">
+
+  <pose>-5 4 0 0 0 -1.45</pose>
+
+  <skin>
+    <filename>/home/lucifer/hospital_sim/models/Casual female(1)/meshes/casual_female.dae</filename>
+    <scale>1.0</scale>
+  </skin>
+
+  <animation name="walking">
+    <filename>/home/lucifer/hospital_sim/models/Casual female(1)/meshes/casual_female.dae</filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>-1 4 0 0 0 -1.45</pose>
+      </waypoint>
+
+      <!-- Move right -->
+      <waypoint>
+        <time>4</time>
+        <pose>-1 -4 0 0 0 0</pose>
+      </waypoint>
+
+      <!-- Turn left -->
+      <waypoint>
+        <time>4.1</time>
+        <pose>-4 -4 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Go straight -->
+      <waypoint>
+        <time>8</time>
+        <pose>-4 -10 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>8.1</time>
+        <pose>-4 -10 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Return down -->
+      <waypoint>
+        <time>12</time>
+        <pose>-1 -4 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Face start direction -->
+      <waypoint>
+        <time>12.1</time>
+        <pose>-4 -4 0 0 0 -3.14</pose>
+      </waypoint>
+
+      <!-- Return to start -->
+      <waypoint>
+        <time>16</time>
+        <pose>-1 4 0 0 0 -3.14</pose>
+      </waypoint>
+
+      <!-- Reset orientation -->
+      <waypoint>
+        <time>16.1</time>
+        <pose>-1 4 0 0 0 0</pose>
+      </waypoint>
+
+    </trajectory>
+  </script>
+
+</actor>
+<!--icuroom1 to nurse_table-->
+<actor name="visitor_3">
+
+  <pose>-5 5 0 0 0 0</pose>
+
+  <skin>
+    <filename>
+      /home/lucifer/Downloads/Walking person(2)/meshes/walking.dae
+    </filename>
+    <scale>1.0</scale>
+  </skin>
+
+  <animation name="walking">
+    <filename>
+      /home/lucifer/Downloads/Walking person(2)/meshes/walking.dae
+    </filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+  <waypoint>
+    <time>0</time>
+    <pose>-5 5 0 0 0 -1.57</pose>
+  </waypoint>
+
+  <!-- Move straight down -->
+  <waypoint>
+    <time>5</time>
+    <pose>-5 -5 0 0 0 -1.57</pose>
+  </waypoint>
+
+  <!-- Turn around -->
+  <waypoint>
+    <time>5.1</time>
+    <pose>-5 -5 0 0 0 1.57</pose>
+  </waypoint>
+
+  <!-- Return -->
+  <waypoint>
+    <time>10</time>
+    <pose>-5 5 0 0 0 1.57</pose>
+  </waypoint>
+
+  <!-- Face original direction -->
+  <waypoint>
+    <time>10.1</time>
+    <pose>-5 5 0 0 0 -1.57</pose>
+  </waypoint>
+
+</trajectory>
+   
+  </script>
+
+</actor>
+<!--walk_person-->
+<!-- visitor_4 -->
+
+<actor name="visitor_4">
+
+  <pose>10 -6 1 0 0 -1.57</pose>
+
+  <skin>
+    <filename>/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae</filename>
+  </skin>
+
+  <animation name="walking">
+    <filename>/home/lucifer/hospital_sim/models/Walking actor(1)/meshes/walk.dae</filename>
+    <interpolate_x>true</interpolate_x>
+  </animation>
+
+  <script>
+    <loop>true</loop>
+
+    <trajectory id="0" type="walking">
+
+      <!-- Start -->
+      <waypoint>
+        <time>0</time>
+        <pose>10 -6 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Walk straight -->
+      <waypoint>
+        <time>2</time>
+        <pose>10 -12 0 0 0 -1.57</pose>
+      </waypoint>
+
+      <!-- Turn around -->
+      <waypoint>
+        <time>2.1</time>
+        <pose>10 -12 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Return -->
+      <waypoint>
+        <time>5</time>
+        <pose>10 -6 0 0 0 1.57</pose>
+      </waypoint>
+
+      <!-- Face original direction -->
+      <waypoint>
+        <time>5.1</time>
+        <pose>10 -6 0 0 0 -1.57</pose>
+      </waypoint>
+
+    </trajectory>
+  </script>
+
+</actor>
+      
+<!-- TurtleBot3 -->
+<include>
+  <uri>model://turtlebot3_burger</uri>
+  <name>tb3_1</name>
+  <pose>4 4 0.05 0 0 0</pose>
+</include>             
+
+</world>
+</sdf>
